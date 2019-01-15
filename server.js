@@ -29,4 +29,21 @@ app.get("/magic/:question", (request,response) => {
 
 });
 
+app.get("/fib/:index", (request,response) => {
+
+	let index = request.params.index;
+
+	let t1 = 0;
+	let t2 = 1;
+	let next = 0;
+	
+	for (let i=2; i<=index; i++) {
+		next = t1 + t2;
+		t1 = t2;
+		t2 = next;
+	}
+	response.send(`Fib number at index(${index}) is:  ${next} \n`);
+});
+
+
 app.listen(9000);
